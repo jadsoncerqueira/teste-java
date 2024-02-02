@@ -1,9 +1,12 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.math.BigDecimal;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +25,9 @@ public class Main {
 
         funcionarios = funcionarios.stream().filter(f -> !f.name.equals("João")).collect(Collectors.toList());
 
+        System.out.println("---------------------");
         System.out.println("Funcionários:");
+        System.out.println("---------------------");
         funcionarios.forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
                 f.name, f.dataNascimento.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
                 f.salario, f.funcao));
@@ -32,5 +37,18 @@ public class Main {
 
         Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream()
                 .collect(Collectors.groupingBy(f -> f.funcao));
+
+        System.out.println("---------------------");
+        System.out.println("Funcionários agrupados:");
+        System.out.println("---------------------");
+        funcionariosPorFuncao.forEach((chave, valor) -> {
+            System.out.println(chave);
+            valor.forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                    f.name, f.dataNascimento.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                    f.salario, f.funcao));
+        });
+
+
+
     }
 }
