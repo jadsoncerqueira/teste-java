@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,5 +18,7 @@ public class Main {
         funcionarios.add(new Funcionario("Laura", LocalDate.of(1994, Month.JULY, 8), new BigDecimal("3017.45"), "Gerente"));
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, Month.MAY, 24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, Month.SEPTEMBER, 2), new BigDecimal("2799.93"), "Gerente"));
+
+        funcionarios = funcionarios.stream().filter(f -> !f.nome.equals("João")).collect(Collectors.toList());
     }
 }
