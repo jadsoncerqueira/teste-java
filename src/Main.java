@@ -28,5 +28,9 @@ public class Main {
                 f.salario, f.funcao));
 
         funcionarios.forEach(f -> f.salario = f.salario.multiply(new BigDecimal("1.10")));
+
+
+        Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream()
+                .collect(Collectors.groupingBy(f -> f.funcao));
     }
 }
