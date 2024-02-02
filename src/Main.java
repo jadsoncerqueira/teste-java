@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.stream.Collectors;
+import java.math.BigDecimal;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +20,13 @@ public class Main {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, Month.MAY, 24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, Month.SEPTEMBER, 2), new BigDecimal("2799.93"), "Gerente"));
 
-        funcionarios = funcionarios.stream().filter(f -> !f.nome.equals("João")).collect(Collectors.toList());
+        funcionarios = funcionarios.stream().filter(f -> !f.name.equals("João")).collect(Collectors.toList());
+
+        System.out.println("Funcionários:");
+        funcionarios.forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                f.name, f.dataNascimento.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                f.salario, f.funcao));
+
+        funcionarios.forEach(f -> f.salario = f.salario.multiply(new BigDecimal("1.10")));
     }
 }
