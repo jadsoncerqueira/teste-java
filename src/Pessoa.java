@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 
 public class Pessoa {
-    String  _name;
-    LocalDate _dataNascimento;
-    public Pessoa(String name, LocalDate dataNascimento) {
-        _name = name;
-        _dataNascimento = dataNascimento;
+    String  name;
+    LocalDate dataNascimento;
+    public Pessoa(String n, LocalDate dN) {
+        name = n;
+        dataNascimento = dN;
     }
 }
