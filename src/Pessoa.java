@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Pessoa {
+abstract class Pessoa {
     String  name;
     LocalDate dataNascimento;
     public Pessoa(String n, LocalDate dN) {
