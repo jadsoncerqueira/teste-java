@@ -89,5 +89,14 @@ public class Main {
 
 
 
+        double totalSalarios = funcionarios.stream()
+                .mapToDouble(f -> f.salario.doubleValue())
+                .sum();
+
+
+        System.out.println("-------------------------------------------");
+        System.out.printf("Total dos salários: R$ %,.2f", totalSalarios);
+        System.out.println("");
+        System.out.println("-------------------------------------------");
     }
 }
