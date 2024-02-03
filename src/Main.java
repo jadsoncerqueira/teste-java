@@ -77,6 +77,17 @@ public class Main {
         System.out.println("Idade: " + Period.between(maisVelho.dataNascimento, LocalDate.now()).getYears() + " anos");
 
 
+        System.out.println("---------------------");
+        System.out.println("Funcionários em ordem alfabética:");
+        System.out.println("---------------------");
+
+        funcionarios.stream()
+                .sorted((f1, f2) -> f1.name.compareToIgnoreCase(f2.name))
+                .forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                        f.name, f.dataNascimento.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                        f.salario, f.funcao));
+
+
 
     }
 }
