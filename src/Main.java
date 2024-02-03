@@ -98,5 +98,15 @@ public class Main {
         System.out.printf("Total dos salários: R$ %,.2f", totalSalarios);
         System.out.println("");
         System.out.println("-------------------------------------------");
+
+
+
+        System.out.println("Quantidade de salarios minimo dos funcionários:");
+        System.out.println("-------------------------------------------");
+
+        funcionarios.forEach(f -> {
+            BigDecimal salariosMinimos = f.salario.divide(new BigDecimal("1212.00"), 2, BigDecimal.ROUND_HALF_UP);
+            System.out.println(f.name + " ganha " + salariosMinimos + " salários mínimos.");
+        });
     }
 }
