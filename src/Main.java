@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.time.Period;
+import java.util.Comparator;
 
 
 public class Main {
@@ -59,6 +61,20 @@ public class Main {
                         f.salario, f.funcao);
             }
         });
+
+
+
+        System.out.println("---------------------");
+        System.out.println("Funcionário mais velho:");
+        System.out.println("---------------------");
+
+
+        Funcionario maisVelho = funcionarios.stream()
+                .max(Comparator.comparing(f -> Period.between(f.dataNascimento, LocalDate.now()).getYears()))
+                .orElse(null);
+
+        System.out.println("Nome: " + maisVelho.name);
+        System.out.println("Idade: " + Period.between(maisVelho.dataNascimento, LocalDate.now()).getYears() + " anos");
 
 
 
